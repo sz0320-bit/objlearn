@@ -25,10 +25,34 @@ function set(x){
         x.value = 'x';
         newcheck = false;
         x.style.pointerEvents = 'none';
+        setObj(x);
     }
     else{
         x.value = 'o';
         newcheck = true;
         x.style.pointerEvents = 'none';
+        setObj(x);
     }
 }
+
+function setObj(x){
+    let divid = x.id;
+    board[divid] = x.value;
+    console.log(board[divid]);
+    console.log(board);
+}
+
+const board = {
+        div1: '',
+        div2: '',
+        div3: '',
+        div4: '',
+        div5: '',
+        div6: '',
+        div7: '',
+        div8: '',
+        div9: ''
+}
+
+
+
