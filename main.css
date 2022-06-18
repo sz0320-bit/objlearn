@@ -16,13 +16,18 @@ body{
     border: 4px solid red;
 }
 .readbox{
-    width: 97%;
-    height: 97%;
+    width: 100%;
+    height: 100%;
     background-color: aquamarine;
     font-size: 10rem;
     text-align: center;
-
+    border: none;
 }
+.readbox:hover{
+    border: 4px solid grey;
+}
+
+
 #div1 { grid-area: 1 / 1 / 2 / 2; }
 #div2 { grid-area: 1 / 2 / 2 / 3; }
 #div3 { grid-area: 1 / 3 / 2 / 4; }
