@@ -18,6 +18,25 @@ readbox.addEventListener('click', () => {
     alert('lol');
 });*/
 
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', () => {
+    document.querySelector('.mainboard').innerHTML += '' +
+        '<div class="inside" ><input type="button"  class="readbox" id="div1" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div2" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div3" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div4" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div5" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div6" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div7" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div8" value="" onclick="set(this)"></div>\n'+
+        '<div class="inside" ><input type="button"  class="readbox" id="div9" value="" onclick="set(this)"></div>'
+});
+
+const deleteButton = document.getElementById('deleteButton');
+deleteButton.addEventListener('click', () => {
+       document.querySelector('.mainboard').innerHTML = '';
+});
+
 let newcheck = true;
 
 function set(x){
