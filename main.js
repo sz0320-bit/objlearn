@@ -5,19 +5,21 @@ function player(name, val){
     this.val = val;
     return {name,val};
 }
-let tx = new player('tomas','x');
-
-const returnCon = ({name,val}) => {
-    console.log(player(name,val));
+let playerOne;
+let playerTwo;
+const returnCon = (val1,name1,val2,name2) => {
+    playerOne = new player(name1,val1);
+    playerTwo = new player(name2,val2);
 }
-
-returnCon(tx);
-
+const returnIcon = ({val}) => {
+    return val.toString();
+}
+const testp = new player('tyson','x');
+returnCon(testp);
 /*const readbox = document.querySelector('.readbox');
 readbox.addEventListener('click', () => {
     alert('lol');
 });*/
-
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', () => {
     document.querySelector('.mainboard').innerHTML += '' +
@@ -29,8 +31,17 @@ startButton.addEventListener('click', () => {
         '<div class="inside" ><input type="button"  class="readbox" id="div6" value="" onclick="set(this)"></div>\n'+
         '<div class="inside" ><input type="button"  class="readbox" id="div7" value="" onclick="set(this)"></div>\n'+
         '<div class="inside" ><input type="button"  class="readbox" id="div8" value="" onclick="set(this)"></div>\n'+
-        '<div class="inside" ><input type="button"  class="readbox" id="div9" value="" onclick="set(this)"></div>'
+        '<div class="inside" ><input type="button"  class="readbox" id="div9" value="" onclick="set(this)"></div>';
+    const player1 = document.querySelector("#player1").value.toString()
+    const player1icon = document.querySelector("#player1icon").value.toString();
+    const player2 = document.querySelector("#player2").value.toString()
+    const player2icon = document.querySelector("#player2icon").value.toString();
+    returnCon(player1icon,player1,player2icon,player2);
 });
+
+
+
+
 
 const deleteButton = document.getElementById('deleteButton');
 deleteButton.addEventListener('click', () => {
@@ -41,13 +52,13 @@ let newcheck = true;
 
 function set(x){
     if(newcheck === true){
-        x.value = 'x';
+        x.value = returnIcon(playerOne);
         newcheck = false;
         x.style.pointerEvents = 'none';
         setObj(x);
     }
     else{
-        x.value = 'o';
+        x.value = returnIcon(playerTwo);
         newcheck = true;
         x.style.pointerEvents = 'none';
         setObj(x);
