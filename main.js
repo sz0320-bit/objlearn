@@ -1,5 +1,3 @@
-
-
 function player(name, val){
     this.name = name;
     this.val = val;
@@ -16,10 +14,12 @@ const returnIcon = ({val}) => {
 }
 const testp = new player('tyson','x');
 returnCon(testp);
+
 /*const readbox = document.querySelector('.readbox');
 readbox.addEventListener('click', () => {
     alert('lol');
 });*/
+
 const startButton = document.getElementById('startButton');
 startButton.addEventListener('click', () => {
     document.querySelector('.mainboard').innerHTML += '' +
@@ -39,13 +39,18 @@ startButton.addEventListener('click', () => {
     returnCon(player1icon,player1,player2icon,player2);
 });
 
-
-
-
-
 const deleteButton = document.getElementById('deleteButton');
 deleteButton.addEventListener('click', () => {
        document.querySelector('.mainboard').innerHTML = '';
+        board.div1 = '';
+        board.div2 = '';
+        board.div3 = '';
+        board.div4 = '';
+        board.div5 = '';
+        board.div6 = '';
+        board.div7 = '';
+        board.div8 = '';
+        board.div9 = '';
 });
 
 let newcheck = true;
@@ -56,12 +61,14 @@ function set(x){
         newcheck = false;
         x.style.pointerEvents = 'none';
         setObj(x);
+        winCheck();
     }
     else{
         x.value = returnIcon(playerTwo);
         newcheck = true;
         x.style.pointerEvents = 'none';
         setObj(x);
+        winCheck();
     }
 }
 
@@ -84,5 +91,39 @@ const board = {
         div9: ''
 }
 
+function winCheck(){
+         if(board.div1 === board.div2 && board.div2 === board.div3 && board.div1 !== ''){
+              alert('win');
+             console.log('win');
+         }
+         else if(board.div4 === board.div5 && board.div5 === board.div6 && board.div4 !== ''){
+              alert('win');
+             console.log('win');
+         }
+         else if(board.div7 === board.div8 && board.div8 === board.div9 && board.div7 !== ''){
+              alert('win');
+             console.log('win');
+        }
+         else if(board.div1 === board.div4 && board.div4 === board.div7 && board.div1 !== ''){
+              alert('win');
+             console.log('win');
+        }
+         else if(board.div2 === board.div5 && board.div5 === board.div8 && board.div2 !== ''){
+              alert('win');
+             console.log('win');
+         }
+         else if(board.div3 === board.div6 && board.div6 === board.div9 && board.div3 !== ''){
+              alert('win');
+             console.log('win');
+         }
+         else if(board.div1 === board.div5 && board.div5 === board.div9 && board.div1 !== ''){
+              alert('win');
+             console.log('win');
+         }
+         else if(board.div3 === board.div5 && board.div5 === board.div7 && board.div3 !== ''){
+              alert('win');
+             console.log('win');
+         }
+}
 
 
