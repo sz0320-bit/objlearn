@@ -5,17 +5,20 @@
     <title>Title</title>
     <link rel="stylesheet" href="main.css">
 </head>
-<body>
-<input type="button" value="start" id="startButton">
-<label for="player1">player 1 name</label>
-<input type="text" style="height: 3em" id="player1">
-<label for="player2">player 2 name</label>
-<input type="text" style="height: 3em" id="player2">
-<label for="player1icon">player 1 icon</label>
-<input type="text" style="height: 3em" id="player1icon" maxlength="1">
-<label for="player2icon">player 2 icon</label>
-<input type="text" style="height: 3em" id="player2icon" maxlength="1">
-<input type="button" value="delete" id="deleteButton">
+<body onload="alert('enter player names and icons to start');randomBool();">
+    <div class="inputBox">
+    <input type="button" value="start" id="startButton" disabled onclick="this.disabled = true;
+                                                                 document.querySelector('#deleteButton').disabled = false;">
+    <label for="player1">player 1 name</label>
+    <input type="text" style="height: 3em" id="player1" onkeyup="verify()">
+    <label for="player2">player 2 name</label>
+    <input type="text" style="height: 3em" id="player2" onkeyup="verify()">
+    <label for="player1icon">player 1 icon</label>
+    <input type="text" style="height: 3em" id="player1icon" maxlength="1" onkeyup="verify()">
+    <label for="player2icon">player 2 icon</label>
+    <input type="text" style="height: 3em" id="player2icon" maxlength="1" onkeyup="verify()">
+    <input type="button" value="delete" id="deleteButton" disabled onclick="this.disabled = true;">
+    </div>
     <div class="mainboard">
     </div>
 <script src="main.js"></script>

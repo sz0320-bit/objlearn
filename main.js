@@ -3,11 +3,10 @@ function player(name, val){
     this.val = val;
     return {name,val};
 }
-let playerOne;
-let playerTwo;
+let playArr = ['',''];
 const returnCon = (val1,name1,val2,name2) => {
-    playerOne = new player(name1,val1);
-    playerTwo = new player(name2,val2);
+    playArr[0] = new player(name1,val1);
+    playArr[1] = new player(name2,val2);
 }
 const returnIcon = ({val}) => {
     return val.toString();
@@ -37,7 +36,17 @@ startButton.addEventListener('click', () => {
     const player2 = document.querySelector("#player2").value.toString()
     const player2icon = document.querySelector("#player2icon").value.toString();
     returnCon(player1icon,player1,player2icon,player2);
+    announceName();
 });
+
+function announceName(){
+    if(newcheck){
+        alert(playArr[0].name+' starts');
+    }
+    else if(newcheck){
+        alert(playArr[1].name+' starts');
+    }
+}
 
 const deleteButton = document.getElementById('deleteButton');
 deleteButton.addEventListener('click', () => {
@@ -51,20 +60,36 @@ deleteButton.addEventListener('click', () => {
         board.div7 = '';
         board.div8 = '';
         board.div9 = '';
+     document.querySelector("#player1").value = '';
+     document.querySelector("#player1icon").value = '';
+     document.querySelector("#player2").value = '';
+     document.querySelector("#player2icon").value = '';
+     randomBool();
 });
 
-let newcheck = true;
+let newcheck;
+function randomBool(){
+    const random = Math.floor(Math.random() * 2);
+    if(random === 0){
+        newcheck = true;
+    }
+    else if(random === 1){
+        newcheck = true;
+    }
+    console.log(random);
+}
+
 
 function set(x){
     if(newcheck === true){
-        x.value = returnIcon(playerOne);
+        x.value = returnIcon(playArr[0]);
         newcheck = false;
         x.style.pointerEvents = 'none';
         setObj(x);
         winCheck();
     }
     else{
-        x.value = returnIcon(playerTwo);
+        x.value = returnIcon(playArr[1]);
         newcheck = true;
         x.style.pointerEvents = 'none';
         setObj(x);
@@ -91,39 +116,63 @@ const board = {
         div9: ''
 }
 
+function winner(x){
+    if(x === playArr[0].val){
+        return playArr[0].name;
+    }
+    else if(x === playArr[1].val){
+        return playArr[1].name;
+    }
+}
+
 function winCheck(){
          if(board.div1 === board.div2 && board.div2 === board.div3 && board.div1 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div1)+' wins');
+             console.log(winner(board.div1)+' wins');
+             deleteButton.click();
          }
          else if(board.div4 === board.div5 && board.div5 === board.div6 && board.div4 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div4)+' wins');
+             console.log(winner(board.div4)+' wins');
+             deleteButton.click();
          }
          else if(board.div7 === board.div8 && board.div8 === board.div9 && board.div7 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div7)+' wins');
+             console.log(winner(board.div7)+' wins');
+             deleteButton.click();
         }
          else if(board.div1 === board.div4 && board.div4 === board.div7 && board.div1 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div1)+' wins');
+             console.log(winner(board.div1)+' wins');
+             deleteButton.click();
         }
          else if(board.div2 === board.div5 && board.div5 === board.div8 && board.div2 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div5)+' wins');
+             console.log(winner(board.div5)+' wins');
+             deleteButton.click();
          }
          else if(board.div3 === board.div6 && board.div6 === board.div9 && board.div3 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div3)+' wins');
+             console.log(winner(board.div3)+' wins');
+             deleteButton.click();
          }
          else if(board.div1 === board.div5 && board.div5 === board.div9 && board.div1 !== ''){
-              alert('win');
-             console.log('win');
+             alert(winner(board.div1)+' wins');
+             console.log(winner(board.div1)+' wins');
+             deleteButton.click();
          }
          else if(board.div3 === board.div5 && board.div5 === board.div7 && board.div3 !== ''){
-              alert('win');
-             console.log('win');
+              alert(winner(board.div3)+' wins');
+             console.log(winner(board.div3)+' wins');
+             deleteButton.click();
          }
 }
 
+function verify() {
+    if(document.getElementById("player1").value==="" || document.getElementById("player2").value==="" || document.getElementById("player1icon").value==="" || document.getElementById("player2icon").value==="") {
+        document.getElementById('startButton').disabled = true;
+    } else {
+        document.getElementById('startButton').disabled = false;
+    }
+}
 
